@@ -32,7 +32,8 @@ const AllSellers = () => {
   };
 
   const columns = [
-    { field: "id", headerName: "Seller ID", minWidth: 150, flex: 0.7 },
+    //{ field: "id", headerName: "Seller ID", minWidth: 150, flex: 0.7 },
+    { field: "Shpid", headerName: "Seller ID", minWidth: 150, flex: 0.7 }, // Updated field name
 
     {
       field: "name",
@@ -105,6 +106,7 @@ const AllSellers = () => {
     sellers.forEach((item) => {
       row.push({
         id: item._id,
+        Shpid: item?.Shpid, // Add `Shpid` to display in the table
         name: item?.name,
         email: item?.email,
         joinedAt: item.createdAt.slice(0, 10),

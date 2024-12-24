@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAdminProduct } from "../../redux/actions/adminProduct"
+import { toast } from "react-toastify";
+
 
 const CreateAdminProducts = () => {
   const [productName, setProductName] = useState("");
@@ -16,6 +18,7 @@ const CreateAdminProducts = () => {
     dispatch(createAdminProduct({ productName, unit }));
     setProductName("");
     setUnit("");
+    toast.success("Product added successfully!"); // Show success toast
   };
 
   return (
@@ -46,7 +49,7 @@ const CreateAdminProducts = () => {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="px-4 py-2 bg-[#4F7441] text-white rounded hover:bg-[#6bcf46]"
         >
           Add Product
         </button>

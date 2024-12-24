@@ -21,6 +21,11 @@ router.post(
         return next(new ErrorHandler("User already exists", 400));
       }
 
+    //////////////////////////////////////
+    const Shpid = Math.floor(1000 + Math.random() * 9999).toString(); // Generate a random 3-digit UID
+
+    //////////////////////////////////////
+
       const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
       });
@@ -29,6 +34,7 @@ router.post(
         name: req.body.name,
         email: email,
         password: req.body.password,
+        Shpid, // Save the ShopID/////////////////////////
         avatar: {
           public_id: myCloud.public_id,
           url: myCloud.secure_url,
@@ -83,7 +89,7 @@ router.post(
       if (!newSeller) {
         return next(new ErrorHandler("Invalid token", 400));
       }
-      const { name, email, password, avatar, zipCode, address, phoneNumber } =
+      const { name, email, password, avatar, zipCode, address, phoneNumber , Shpid} =      ///////////////////////////////Shpid
         newSeller;
 
       let seller = await Shop.findOne({ email });
@@ -100,6 +106,8 @@ router.post(
         zipCode,
         address,
         phoneNumber,
+        Shpid,////////////////////////////////////////////////////
+
       });
 
       sendShopToken(seller, 201, res);

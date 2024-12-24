@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
   tags: {
     type: String,
   },
-  ProID: {
+  ProID: {     ///////////////////////////////////////
     type: Number,
   },
   discountPrice: {
