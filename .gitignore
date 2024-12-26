@@ -2,3 +2,7 @@ frontend/node_modules/
 backend/config/.env
 backend/node_modules/
 socket/node_modules/
+
+#Secret
+.env
+backend/config/.env
